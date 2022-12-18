@@ -18,17 +18,6 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+# What is Style Haven
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p>Style Haven is an online shopping platform that offers a wide range of clothing options for customers to choose from. You can browse through different categories of clothes such as tops, bottoms, dresses, and outerwear, and add your desired items to your cart. Once you have selected all the items you wish to purchase, you can proceed to the checkout page, where you can select your size and enter your delivery pin code to check the availability of delivery to your location. Style Haven also offers payment integration, so you can easily make your payment using your preferred payment method. Whether you're looking for casual everyday wear or something more formal, Style Haven has something for everyone.</p>
