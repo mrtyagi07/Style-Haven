@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-const Slug = () => {
+const Slug = ({ addToCart }) => {
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setPin] = useState();
@@ -28,10 +28,10 @@ const Slug = () => {
             />
             <div class="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
               <h2 class="title-font text-sm tracking-widest text-gray-500">
-                BRAND NAME
+                Style Haven
               </h2>
               <h1 class="title-font mb-1 text-3xl font-medium text-gray-900">
-                The Catcher in the Rye
+                Find your style, find your haven
               </h1>
               <div class="mb-4 flex">
                 <span class="flex items-center">
@@ -173,10 +173,25 @@ const Slug = () => {
               </div>
               <div class="flex">
                 <span class="title-font text-2xl font-medium text-gray-900">
-                  $58.00
+                  ₹499.00
                 </span>
-                <button class="ml-14 flex rounded border-0 bg-violet-500 py-2 px-6 text-white hover:bg-violet-600 focus:outline-none">
-                  Button
+                <button
+                  onClick={() => {
+                    addToCart(
+                      slug,
+                      1,
+                      499,
+                      "Find Your Style Find Your Haven(XL,Black)",
+                      "XL",
+                      "Black",
+                    );
+                  }}
+                  class="ml-8 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6"
+                >
+                  Add to Cart
+                </button>
+                <button class="ml-4 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6">
+                  Buy Now
                 </button>
                 <button class="ml-4 inline-flex h-10 w-10 items-center justify-center rounded-full border-0 bg-gray-200 p-0 text-gray-500">
                   <svg

@@ -6,7 +6,7 @@ const Tshirts = () => {
     <div>
       <section className="body-font bg-violet-100 text-gray-600">
         <div className="container mx-auto px-5 py-24">
-          <div className="-m-4 flex flex-wrap">
+          <div className="-m-4 flex flex-wrap justify-center">
             <Link
               href={"/product/Find your style, find your haven"}
               className="m-2  shadow-lg"
