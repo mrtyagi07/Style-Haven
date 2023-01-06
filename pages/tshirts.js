@@ -21,10 +21,10 @@ const Tshirts = ({ products }) => {
                   legacyBehavior
                 >
                   <div className="m-5 w-full cursor-pointer p-4 text-center shadow-lg md:w-1/2 lg:w-1/5">
-                    <a className="relative block   overflow-hidden rounded">
+                    <a className="relative flex justify-center overflow-hidden rounded">
                       <img
                         alt="ecommerce"
-                        className="m-auto block h-[36vh]  md:m-0"
+                        className="m-auto block h-[36vh] md:m-0"
                         src={products[item].img}
                       />
                     </a>
@@ -98,11 +98,7 @@ const Tshirts = ({ products }) => {
 export async function getServerSideProps(context) {
   dotenv.config({ path: "../.env" });
   const DB = process.env.DATABASE;
-  await mongoose.connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  });
+  await mongoose.connect(DB);
 
   let products = await Product.find({ category: "tshirt" });
 

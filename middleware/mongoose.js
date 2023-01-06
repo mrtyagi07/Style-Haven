@@ -7,12 +7,7 @@ const DB = process.env.DATABASE;
 console.log(mongoose.connection.readyState);
 
 const connectDb = (handler) => async (req, res) => {
-  await mongoose.connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  });
-
+  await mongoose.connect(DB);
   return handler(req, res);
 };
 
