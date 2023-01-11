@@ -36,7 +36,7 @@ export default function Home() {
               matter what your personal style is.
             </p>
           </div>
-          <div className="-m-4 flex flex-wrap">
+          {/* <div className="-m-4 flex flex-wrap">
             <div className="p-4 md:w-1/2 xl:w-1/3">
               <div className="rounded-lg border border-gray-200 p-6">
                 <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-violet-100 text-violet-500">
@@ -184,9 +184,9 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
           <button className="mx-auto mt-16 flex rounded border-0 bg-violet-500 py-2 px-8 text-lg text-white hover:bg-violet-600 focus:outline-none">
-            Button
+            Shop
           </button>
         </div>
       </section>

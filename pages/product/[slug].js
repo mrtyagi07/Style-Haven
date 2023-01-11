@@ -38,14 +38,14 @@ const Slug = ({ addToCart, product, variants }) => {
             <img
               alt="ecommerce"
               class="w-full rounded object-cover object-top px-24 lg:h-auto lg:w-1/2"
-              src="https://images.unsplash.com/photo-1523585298601-d46ae038d7d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
+              src={product.img}
             />
             <div class="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
               <h2 class="title-font text-sm tracking-widest text-gray-500">
                 Style Haven
               </h2>
               <h1 class="title-font mb-1 text-3xl font-medium text-gray-900">
-                Find your style, find your haven
+                {product.title} ({product.size}/{product.color})
               </h1>
               <div class="mb-4 flex">
                 <span class="flex items-center">
@@ -145,14 +145,7 @@ const Slug = ({ addToCart, product, variants }) => {
                   </a>
                 </span>
               </div>
-              <p class="leading-relaxed">
-                Fam locavore kickstarter distillery. Mixtape chillwave tumeric
-                sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo
-                juiceramps cornhole raw denim forage brooklyn. Everyday carry +1
-                seitan poutine tumeric. Gastropub blue bottle austin listicle
-                pour-over, neutra jean shorts keytar banjo tattooed umami
-                cardigan.
-              </p>
+              <p class="leading-relaxed">{product.desc}</p>
               <div class="mt-6 mb-5 flex items-center border-b-2 border-gray-100 pb-5">
                 <div class="flex">
                   <span class="mr-3">Color</span>
@@ -282,14 +275,7 @@ const Slug = ({ addToCart, product, variants }) => {
                 </span>
                 <button
                   onClick={() => {
-                    addToCart(
-                      slug,
-                      1,
-                      499,
-                      "Find Your Style Find Your Haven(XL,Black)",
-                      "XL",
-                      "Black",
-                    );
+                    addToCart(slug, 1, 499, product.title, size, color);
                   }}
                   class="${color==='white'?'border-black':'border-gray-300'} ml-8 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6"
                 >

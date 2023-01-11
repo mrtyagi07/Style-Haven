@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import logo from "../public/assets/1.png";
 
@@ -19,114 +20,104 @@ const Footer = () => {
               <span className="ml-3 text-xl">Style Haven</span>
             </a>
             <p className="mt-2 px-4 text-sm text-gray-500">
-              Air plant banjo lyft occupy retro adaptogen indego
+              Find your style, find your haven
             </p>
           </div>
           <div className="-mb-10 mt-10 flex flex-grow flex-wrap text-center md:mt-0 md:pl-20 md:text-left">
             <div className="w-full px-4 md:w-1/2 lg:w-1/4">
               <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-                CATEGORIES
+                SHOPS
               </h2>
               <nav className="mb-10 list-none">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    First Link
-                  </a>
+                  <Link href={"/tshirts"} legacyBehavior>
+                    <a className="text-gray-600 hover:text-gray-800">Tshirts</a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
-                  </a>
+                  <Link href={"/tops"} legacyBehavior>
+                    <a className="text-gray-600 hover:text-gray-800">Top</a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
+                  <Link href={"/jacket"} legacyBehavior>
+                    <a className="text-gray-600 hover:text-gray-800">Jacket</a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
-                  </a>
+                  <Link href={"/hoodies"} legacyBehavior>
+                    <a className="text-gray-600 hover:text-gray-800">Hoddies</a>
+                  </Link>
                 </li>
               </nav>
             </div>
             <div className="w-full px-4 md:w-1/2 lg:w-1/4">
               <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-                CATEGORIES
+                POLICY
               </h2>
               <nav className="mb-10 list-none">
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    First Link
+                    Return Policy
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
+                    Terms of Use
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
+                  <a className="text-gray-600 hover:text-gray-800">Security</a>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
-                  </a>
+                  <a className="text-gray-600 hover:text-gray-800">Privacy</a>
                 </li>
               </nav>
             </div>
             <div className="w-full px-4 md:w-1/2 lg:w-1/4">
               <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-                CATEGORIES
+                HELP
               </h2>
               <nav className="mb-10 list-none">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    First Link
-                  </a>
+                  <a className="text-gray-600 hover:text-gray-800">Payments</a>
+                </li>
+                <li>
+                  <a className="text-gray-600 hover:text-gray-800">Shipping</a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
+                    Cancellations & Returns
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
-                  </a>
+                  <a className="text-gray-600 hover:text-gray-800">FAQ</a>
                 </li>
               </nav>
             </div>
             <div className="w-full px-4 md:w-1/2 lg:w-1/4">
               <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-                CATEGORIES
+                REGISTERED OFFICE ADDRESS
               </h2>
               <nav className="mb-10 list-none">
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    First Link
+                    Style Haven Private Limited,
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
+                    Buildings Tyagi, Delhi &
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
+                    NCR Tech Village,
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
+                    Telephone: 011-77777777
                   </a>
                 </li>
               </nav>
@@ -136,14 +127,14 @@ const Footer = () => {
         <div className="bg-violet-200">
           <div className="container mx-auto flex flex-col flex-wrap py-4 px-5 sm:flex-row">
             <p className="text-center text-sm text-gray-500 sm:text-left">
-              © 2020 Tailblocks —
+              © 2022 Style Haven —
               <a
-                href="https://twitter.com/knyttneve"
+                href="https://twitter.com/mrtyagi07"
                 rel="noopener noreferrer"
                 className="ml-1 text-gray-600"
                 target="_blank"
               >
-                @knyttneve
+                @mrtyagi07
               </a>
             </p>
             <span className="mt-2 inline-flex justify-center sm:ml-auto sm:mt-0 sm:justify-start">
