@@ -1,7 +1,12 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import Product from "../../models/Product";
+import mongoose from "mongoose";
 
-const Slug = ({ addToCart }) => {
+const dotenv = require("dotenv");
+
+const Slug = ({ addToCart, product, variants }) => {
+  console.log(product, variants);
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setPin] = useState();
@@ -14,6 +19,15 @@ const Slug = ({ addToCart }) => {
 
   const onChangePin = (e) => {
     setPin(+e.target.value);
+  };
+
+  const [color, setColor] = useState(product.color);
+  const [size, setSize] = useState(product.size);
+
+  const refreshVariant = (newsize, newcolor) => {
+    console.log(newsize, newcolor);
+    let url = `http://localhost:3000/product/${variants[newcolor][newsize]["slug"]}`;
+    window.location = url;
   };
 
   return (
@@ -142,18 +156,109 @@ const Slug = ({ addToCart }) => {
               <div class="mt-6 mb-5 flex items-center border-b-2 border-gray-100 pb-5">
                 <div class="flex">
                   <span class="mr-3">Color</span>
-                  <button class="h-6 w-6 rounded-full border-2 border-gray-300 focus:outline-none"></button>
-                  <button class="ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-gray-700 focus:outline-none"></button>
-                  <button class="ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-violet-500 focus:outline-none"></button>
+                  {Object.keys(variants).includes("white") &&
+                    Object.keys(variants["white"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "white");
+                        }}
+                        className={`ml-1 h-6 w-6 rounded-full border-2  bg-white focus:outline-none ${
+                          color === "white" ? "border-black" : "border-gray-300"
+                        }`}
+                      ></button>
+                    )}
+                  {Object.keys(variants).includes("red") &&
+                    Object.keys(variants["red"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "red");
+                        }}
+                        class="${color==='red'?'border-black':'border-gray-300'} ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-red-700 focus:outline-none"
+                      ></button>
+                    )}
+                  {Object.keys(variants).includes("green") &&
+                    Object.keys(variants["green"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "green");
+                        }}
+                        className={`ml-1 h-6 w-6 rounded-full border-2  bg-green-500 focus:outline-none ${
+                          color === "green" ? "border-black" : "border-gray-300"
+                        }`}
+                      ></button>
+                    )}
+                  {Object.keys(variants).includes("blue") &&
+                    Object.keys(variants["blue"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "blue");
+                        }}
+                        className={`ml-1 h-6 w-6 rounded-full border-2  bg-blue-500 focus:outline-none ${
+                          color === "blue" ? "border-black" : "border-gray-300"
+                        }`}
+                      ></button>
+                    )}
+                  {Object.keys(variants).includes("purple") &&
+                    Object.keys(variants["purple"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "purple");
+                        }}
+                        className={`ml-1 h-6 w-6 rounded-full border-2 bg-purple-500 focus:outline-none ${
+                          color === "purple"
+                            ? "border-black"
+                            : "border-gray-300"
+                        }`}
+                      ></button>
+                    )}
+                  {Object.keys(variants).includes("yellow") &&
+                    Object.keys(variants["yellow"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "yellow");
+                        }}
+                        className={`ml-1 h-6 w-6 rounded-full border-2  bg-yellow-500 focus:outline-none ${
+                          color === "yellow"
+                            ? "border-black"
+                            : "border-gray-300"
+                        }`}
+                      ></button>
+                    )}
+                  {Object.keys(variants).includes("black") &&
+                    Object.keys(variants["black"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "black");
+                        }}
+                        className={`ml-1 h-6 w-6 rounded-full border-2  bg-black focus:outline-none ${
+                          color === "black" ? "border-black" : "border-gray-300"
+                        }`}
+                      ></button>
+                    )}
                 </div>
                 <div class="ml-6 flex items-center">
                   <span class="mr-3">Size</span>
                   <div class="relative">
-                    <select class="appearance-none rounded border border-gray-300 py-2 pl-3 pr-10 text-base focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200">
-                      <option>SM</option>
-                      <option>M</option>
-                      <option>L</option>
-                      <option>XL</option>
+                    <select
+                      value={size}
+                      onChange={(e) => refreshVariant(e.target.value, color)}
+                      class="appearance-none rounded border border-gray-300 py-2 pl-3 pr-10 text-base focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                    >
+                      {Object.keys(variants[color]).includes("S") && (
+                        <option value={"S"}>S</option>
+                      )}
+                      {Object.keys(variants[color]).includes("M") && (
+                        <option value={"M"}>M</option>
+                      )}
+                      {Object.keys(variants[color]).includes("L") && (
+                        <option value={"L"}>L</option>
+                      )}
+                      {Object.keys(variants[color]).includes("XL") && (
+                        <option value={"XL"}>XL</option>
+                      )}
+                      {Object.keys(variants[color]).includes("XXL") && (
+                        <option value={"XXL"}>XXL</option>
+                      )}
                     </select>
                     <span class="pointer-events-none absolute right-0 top-0 flex h-full w-10 items-center justify-center text-center text-gray-600">
                       <svg
@@ -186,11 +291,11 @@ const Slug = ({ addToCart }) => {
                       "Black",
                     );
                   }}
-                  class="ml-8 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6"
+                  class="${color==='white'?'border-black':'border-gray-300'} ml-8 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6"
                 >
                   Add to Cart
                 </button>
-                <button class="ml-4 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6">
+                <button class="${color==='white'?'border-black':'border-gray-300'} ml-4 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6">
                   Buy Now
                 </button>
                 <button class="ml-4 inline-flex h-10 w-10 items-center justify-center rounded-full border-0 bg-gray-200 p-0 text-gray-500">
@@ -217,7 +322,7 @@ const Slug = ({ addToCart }) => {
                 />
                 <button
                   onClick={checkServiceAbility}
-                  class="ml-14 flex rounded border-0 bg-violet-500 py-2 px-6 text-white hover:bg-violet-600 focus:outline-none"
+                  class="${color==='white'?'border-black':'border-gray-300'} ml-14 flex rounded border-0 bg-violet-500 py-2 px-6 text-white hover:bg-violet-600 focus:outline-none"
                 >
                   check
                 </button>
@@ -239,5 +344,30 @@ const Slug = ({ addToCart }) => {
     </div>
   );
 };
+
+export async function getServerSideProps(context) {
+  dotenv.config({ path: "../.env" });
+  const DB = process.env.DATABASE;
+  await mongoose.connect(DB);
+
+  let product = await Product.findOne({ slug: context.query.slug });
+  let variants = await Product.find({ title: product.title });
+  let colorSizeSlug = {}; //{red:{xl:{slug:'style-haven-xl'}}}
+  for (let item of variants) {
+    if (Object.keys(colorSizeSlug).includes(item.color)) {
+      colorSizeSlug[item.color][item.size] = { slug: item.slug };
+    } else {
+      colorSizeSlug[item.color] = {};
+      colorSizeSlug[item.color][item.size] = { slug: item.slug };
+    }
+  }
+
+  return {
+    props: {
+      product: JSON.parse(JSON.stringify(product)),
+      variants: JSON.parse(JSON.stringify(colorSizeSlug)),
+    },
+  };
+}
 
 export default Slug;
