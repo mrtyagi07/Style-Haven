@@ -2,10 +2,12 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Product from "../../models/Product";
 import mongoose from "mongoose";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const dotenv = require("dotenv");
 
-const Slug = ({ addToCart, product, variants }) => {
+const Slug = ({ buyNow, addToCart, product, variants }) => {
   console.log(product, variants);
   const router = useRouter();
   const { slug } = router.query;
@@ -14,7 +16,32 @@ const Slug = ({ addToCart, product, variants }) => {
   const checkServiceAbility = async () => {
     let pins = await fetch("http://localhost:3000/api/pincode");
     let pinJson = await pins.json();
-    pinJson.includes(pin) ? setService(true) : setService(false);
+
+    if (pinJson.includes(pin)) {
+      setService(true);
+      toast.success("Pin is Serviceble", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      setService(false);
+      toast.error("Pin not Serviceble", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
 
   const onChangePin = (e) => {
@@ -33,6 +60,20 @@ const Slug = ({ addToCart, product, variants }) => {
   return (
     <div>
       <section class="body-font overflow-hidden bg-violet-100 text-gray-600">
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {/* Same as */}
+        <ToastContainer />
         <div class="container mx-auto px-5 py-16">
           <div class="mx-auto flex flex-wrap lg:w-4/5">
             <img
@@ -281,7 +322,12 @@ const Slug = ({ addToCart, product, variants }) => {
                 >
                   Add to Cart
                 </button>
-                <button class="${color==='white'?'border-black':'border-gray-300'} ml-4 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6">
+                <button
+                  onClick={() => {
+                    buyNow(slug, 1, 499, product.title, size, color);
+                  }}
+                  class="${color==='white'?'border-black':'border-gray-300'} ml-4 flex rounded border-0 bg-violet-500 py-2 px-2 text-sm text-white hover:bg-violet-600 focus:outline-none md:px-6"
+                >
                   Buy Now
                 </button>
                 <button class="ml-4 inline-flex h-10 w-10 items-center justify-center rounded-full border-0 bg-gray-200 p-0 text-gray-500">

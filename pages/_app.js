@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -6,6 +7,7 @@ import "../styles/globals.css";
 export default function App({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     console.log("Hey! I am here");
@@ -25,7 +27,7 @@ export default function App({ Component, pageProps }) {
     let subt = 0;
     let keys = Object.keys(cart);
     for (let i = 0; i < keys.length; i++) {
-      subt += newCart[keys[i]].price * newCart[keys[i]].qty;
+      subt += newCart[keys[i]]?.price * newCart[keys[i]]?.qty;
     }
     setSubTotal(subt);
   };
@@ -57,6 +59,13 @@ export default function App({ Component, pageProps }) {
     saveCart(newCart);
   };
 
+  const buyNow = (itemCode, qty, price, name, size, variant) => {
+    let newCart = { itemCode: { qty: 1, price, name, size, variant } };
+    setCart(newCart);
+    saveCart(newCart);
+    router.push("/checkout");
+  };
+
   return (
     <>
       <Navbar
@@ -68,6 +77,7 @@ export default function App({ Component, pageProps }) {
         subTotal={subTotal}
       />
       <Component
+        buyNow={buyNow}
         cart={cart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}

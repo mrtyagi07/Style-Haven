@@ -101,9 +101,9 @@ const Footer = () => {
               </h2>
               <nav className="mb-10 list-none">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <p className="text-gray-600 hover:text-gray-800">
                     Style Haven Private Limited,
-                  </a>
+                  </p>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">

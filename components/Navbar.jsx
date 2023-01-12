@@ -43,19 +43,28 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       </div>
       <div className="nav ">
         <ul className="md:text-md flex items-center space-x-6 font-bold">
-          <Link href={"/"}>
+          <Link href={"/"} className="text-gray-800  hover:text-violet-600">
             <li>Home</li>
           </Link>
-          <Link href={"/tshirts"}>
+          <Link
+            href={"/tshirts"}
+            className="text-gray-800 hover:text-violet-600"
+          >
             <li>T-shirts</li>
           </Link>
-          <Link href={"/jacket"}>
+          <Link
+            href={"/jacket"}
+            className="text-gray-800 hover:text-violet-600"
+          >
             <li>Jacket</li>
           </Link>
-          <Link href={"/tops"}>
+          <Link href={"/tops"} className="text-gray-800 hover:text-violet-600">
             <li>Tops</li>
           </Link>
-          <Link href={"/hoodies"}>
+          <Link
+            href={"/hoodies"}
+            className="text-gray-800 hover:text-violet-600"
+          >
             <li>Hoodies</li>
           </Link>
         </ul>
@@ -69,7 +78,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
 
       <div
         ref={ref}
-        className={`sideCart absolute top-0 right-0 z-10 h-[100vh] w-72 ${
+        className={`sideCart absolute top-0 right-0 z-10 h-[100vh] w-72 overflow-y-scroll ${
           Object.keys(cart).length === 0 ? "translate-x-full" : "translate-x-0"
         }  transform bg-violet-300 px-8 py-10 transition-transform`}
       >
